@@ -1,4 +1,5 @@
 var topics = ["Cat", "Dog", "Fish", "Lizard", "Birds", "Peacock", "Kangaroo"];
+var favorites = [];
 
 //Function to create buttons 
 function renderButtons() {
@@ -12,6 +13,7 @@ function renderButtons() {
     $("#buttons-view").append(a);
   }
 }
+
 
 //This function will display all the gifs when the button with gif description is clicked
 function displayGifs() {
@@ -37,8 +39,8 @@ function displayGifs() {
       p.text("Rating : " + results[i].rating);
       var gifImage = $("<img>").addClass("gif-image img-thumbnail");
       gifImage.attr("id", imageidname);
-      gifImage.attr("src", results[i].images.fixed_height.url);
-      gifImage.attr("data-state", "animate");
+      gifImage.attr("src", results[i].images.fixed_height_still.url);
+      gifImage.attr("data-state", "still");
       gifImage.attr("data-still", results[i].images.fixed_height_still.url);
       gifImage.attr("data-animate", results[i].images.fixed_height.url);
       gifDiv.append(p);
@@ -53,8 +55,7 @@ function displayGifs() {
 $("#add-Gif").on("click", function (event) {
   event.preventDefault();
   var topic = $("#Search-input").val().trim();
-  if(topic == "")
-  {
+  if (topic == "") {
     return false;
   }
 
@@ -88,6 +89,7 @@ function StartStopGif() {
 
 //On page load create the buttons from the intial array saved
 renderButtons();
+
 
 //when the button is clicked  display the gifs from api
 $(document).on("click", ".gif", displayGifs);
