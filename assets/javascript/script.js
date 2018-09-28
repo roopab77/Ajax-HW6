@@ -1,4 +1,4 @@
-var topics = ["Cat", "Dog", "Fish", "Lizard", "Birds", "Peacock", "Kangaroo"];
+var topics = ["Basketball", "Soccer", "Football", "Cricket", "Skating", "Running"];
 var favorites = [];
 
 //Function to create buttons 
@@ -39,14 +39,15 @@ function displayGifs() {
       p.text("Rating : " + results[i].rating);
       var gifImage = $("<img>").addClass("gif-image img-thumbnail");
       gifImage.attr("id", imageidname);
-      gifImage.attr("src", results[i].images.fixed_height_still.url);
+      gifImage.attr("src", results[i].images.fixed_width_still.url);
       gifImage.attr("data-state", "still");
-      gifImage.attr("data-still", results[i].images.fixed_height_still.url);
-      gifImage.attr("data-animate", results[i].images.fixed_height.url);
+      gifImage.attr("data-still", results[i].images.fixed_width_still.url);
+      gifImage.attr("data-animate", results[i].images.fixed_width.url);
       gifDiv.append(p);
       gifDiv.prepend(gifImage);
-      $("#GIF-view").prepend(gifDiv);
+      $("#GIF-view").prepend(gifDiv); 
     }
+    $("#GIF-view").prepend("<h2>" + gifCategory + "</h2>");
   });
 
 }
